@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Fill The Bucket!"
+version = "1.0.0"
+id = "artifacts/fill-the-bucket"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20330
+
+[services.development]
+run = "pnpm --filter @workspace/fill-the-bucket run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/fill-the-bucket", "run", "build" ]
+publicDir = "artifacts/fill-the-bucket/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20330"
+BASE_PATH = "/"

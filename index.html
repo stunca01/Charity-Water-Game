@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Fill The Bucket! | charity: water</title>
+  <meta name="description" content="Fill The Bucket! — A charity: water inspired browser game. Catch clean water drops to fill your bucket!" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <div id="game-wrapper">
+
+    <!-- ========================
+         START SCREEN
+         ======================== -->
+    <div id="screen-start" class="screen active">
+      <header class="header">
+        <span class="charity-logo">charity: water</span>
+      </header>
+      <main class="start-content">
+        <div class="clouds">
+          <div class="cloud c1"></div>
+          <div class="cloud c2"></div>
+          <div class="cloud c3"></div>
+        </div>
+        <div class="title-block">
+          <div class="title-drop">💧</div>
+          <h1 class="game-title">Fill The Bucket!</h1>
+          <p class="game-subtitle">Catch clean water, avoid dirty water</p>
+        </div>
+        <div class="bucket-preview-wrap">
+          <div class="preview-bucket">
+            <div class="preview-fill"></div>
+          </div>
+        </div>
+        <div class="start-buttons">
+          <button class="btn btn-primary" id="btn-start">▶&nbsp; START</button>
+          <button class="btn btn-secondary" id="btn-learn-more-start">Learn More</button>
+          <button class="btn btn-secondary" id="btn-options-start">⚙&nbsp; Options</button>
+        </div>
+      </main>
+      <footer class="footer">
+        <span>charity: water &bull; clean water for all</span>
+      </footer>
+    </div>
+
+    <!-- ========================
+         GAMEPLAY SCREEN
+         ======================== -->
+    <div id="screen-game" class="screen">
+      <header class="header game-header">
+        <div class="hdr-stat">
+          <div class="hdr-label">Time Left</div>
+          <div class="hdr-value" id="timer-display">60</div>
+        </div>
+        <span class="charity-logo-sm">charity: water</span>
+        <div class="hdr-stat right">
+          <div class="hdr-label">Score</div>
+          <div class="hdr-value" id="score-display">0</div>
+        </div>
+      </header>
+
+      <div class="progress-bars">
+        <div class="pbar-row">
+          <div class="pbar-labels">
+            <span>🪣 Bucket Fill</span>
+            <span id="bucket-fill-pct">0%</span>
+          </div>
+          <div class="pbar-track"><div class="pbar pbar-clean" id="bucket-fill-bar"></div></div>
+        </div>
+        <div class="pbar-row">
+          <div class="pbar-labels">
+            <span>🦠 Dirty Water</span>
+            <span id="dirty-pct">0%</span>
+          </div>
+          <div class="pbar-track"><div class="pbar pbar-dirty" id="dirty-bar"></div></div>
+        </div>
+      </div>
+
+      <div class="game-area-wrap">
+        <div id="game-area">
+          <div id="guide-line"></div>
+          <div id="drops-container"></div>
+          <div id="bucket">
+            <div class="bucket-body">
+              <div class="bucket-liquid" id="bucket-liquid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-controls">
+        <button class="arrow-btn" id="btn-left" aria-label="Move Left">&#8592;</button>
+        <button class="sound-btn" id="btn-sound-game" aria-label="Toggle Sound">🔊</button>
+        <button class="arrow-btn" id="btn-right" aria-label="Move Right">&#8594;</button>
+      </div>
+
+      <footer class="footer footer-sm">
+        <span>charity: water</span>
+      </footer>
+    </div>
+
+    <!-- ========================
+         END SCREEN
+         ======================== -->
+    <div id="screen-end" class="screen">
+      <header class="header">
+        <span class="charity-logo">charity: water</span>
+      </header>
+      <main class="end-content">
+        <div class="end-icon" id="end-icon">💧</div>
+        <h2 class="end-title" id="end-title">Game Over!</h2>
+        <p class="end-message" id="end-message">Good try! Keep playing to collect more clean water.</p>
+
+        <div class="end-stats">
+          <div class="stat-card">
+            <div class="stat-card-label">Final Score</div>
+            <div class="stat-card-value" id="end-score">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Bucket Fill</div>
+            <div class="stat-card-value" id="end-bucket">0%</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-label">Dirty Water</div>
+            <div class="stat-card-value" id="end-dirty">0%</div>
+          </div>
+        </div>
+
+        <div class="impact-box">
+          <p>💙 100% of public donations go directly to water projects.</p>
+        </div>
+
+        <div class="end-buttons">
+          <a class="btn btn-primary" href="https://www.charitywater.org" target="_blank" rel="noopener noreferrer">
+            Learn More at charitywater.org
+          </a>
+          <button class="btn btn-secondary" id="btn-restart">🔄 Restart</button>
+        </div>
+      </main>
+      <footer class="footer">
+        <span>charity: water &bull; clean water for all</span>
+      </footer>
+    </div>
+
+    <!-- ========================
+         LEARN MORE SCREEN
+         ======================== -->
+    <div id="screen-learn" class="screen">
+      <header class="header">
+        <span class="charity-logo">charity: water</span>
+      </header>
+      <main class="learn-content">
+        <div class="learn-hero">💧</div>
+        <h2 class="learn-title">About charity: water</h2>
+        <div class="learn-cards">
+          <div class="learn-card">
+            <div class="lc-icon">🌍</div>
+            <h3>The Problem</h3>
+            <p>771 million people lack access to clean water — that's 1 in 10. Dirty water leads to disease, poverty, and affects millions of children every day.</p>
+          </div>
+          <div class="learn-card">
+            <div class="lc-icon">💛</div>
+            <h3>Our Mission</h3>
+            <p>charity: water is a nonprofit bringing clean and safe drinking water to people in developing countries. 100% of public donations go directly to water projects.</p>
+          </div>
+          <div class="learn-card">
+            <div class="lc-icon">🚰</div>
+            <h3>Real Impact</h3>
+            <p>Since 2006, charity: water has funded 130,000+ water projects in 29 countries, providing clean water access to over 17 million people — and counting.</p>
+          </div>
+          <div class="learn-card">
+            <div class="lc-icon">🤝</div>
+            <h3>How You Can Help</h3>
+            <p>Every donation brings clean water to someone who needs it. Give a gift, start a fundraiser, or donate your birthday. Every dollar makes a difference.</p>
+          </div>
+        </div>
+        <div class="learn-buttons">
+          <a class="btn btn-primary" href="https://www.charitywater.org" target="_blank" rel="noopener noreferrer">Donate at charitywater.org</a>
+          <button class="btn btn-secondary" id="btn-back-learn">← Back</button>
+        </div>
+      </main>
+      <footer class="footer">
+        <span>charity: water &bull; clean water for all</span>
+      </footer>
+    </div>
+
+    <!-- ========================
+         OPTIONS SCREEN
+         ======================== -->
+    <div id="screen-options" class="screen">
+      <header class="header">
+        <span class="charity-logo">charity: water</span>
+      </header>
+      <main class="options-content">
+        <h2 class="options-title">⚙ Options</h2>
+        <div class="options-list">
+          <div class="option-row">
+            <span class="option-label">🔊 Sound Effects</span>
+            <button class="toggle-btn on" id="toggle-sound" aria-pressed="true">
+              <span class="toggle-knob"></span>
+            </button>
+          </div>
+          <div class="option-row">
+            <span class="option-label">🎯 Difficulty</span>
+            <div class="diff-group">
+              <button class="diff-btn active" data-diff="easy">Easy</button>
+              <button class="diff-btn" data-diff="normal">Normal</button>
+              <button class="diff-btn" data-diff="hard">Hard</button>
+            </div>
+          </div>
+          <div class="option-info">
+            <div class="info-row">
+              <span>Game Duration</span>
+              <span id="opt-duration">60 sec</span>
+            </div>
+            <div class="info-row">
+              <span>Drop Speed</span>
+              <span id="opt-speed">Slow</span>
+            </div>
+            <div class="info-row">
+              <span>Points / Clean Drop</span>
+              <span>+10</span>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-secondary" id="btn-back-options">← Back</button>
+      </main>
+      <footer class="footer">
+        <span>charity: water &bull; clean water for all</span>
+      </footer>
+    </div>
+
+  </div><!-- #game-wrapper -->
+
+  <script src="/script.js"></script>
+</body>
+</html>
