@@ -1,0 +1,620 @@
+/* =========================================================
+   FILL THE BUCKET - BASIC GAME STYLES
+   This file controls how the game looks.
+   ========================================================= */
+
+/* 1. Global styles */
+/* 2. Phone container */
+/* 3. Shared screen styles */
+/* 4. Start screen */
+/* 5. Gameplay screen */
+/* 6. Progress bars */
+/* 7. Game objects */
+/* 8. Buttons */
+/* 9. End screen */
+
+/* =========================================================
+   1. BRAND COLORS AND EASY VARIABLES
+   Change these values to quickly adjust the design.
+   ========================================================= */
+
+
+:root {
+    --yellow: #FFC700;
+    --teal: #00A19D;
+    --cream: #F7F0DC;
+    --black: #111111;
+    --gray: #b8b8b8;
+    --clean-blue: #4A9BF5;
+    --dirty-green: #6B7C4A;
+    --dirty-dark: #4A4738;
+}
+
+
+/* =========================================================
+   2. GLOBAL PAGE SETUP
+   ========================================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    /* Dark background like the mockup */
+    background: #1f1f1f;
+
+    /* Center the phone frame */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    color: var(--black);
+}
+
+
+/* =========================================================
+   3. PHONE FRAME
+   This creates the mobile screen shape.
+   ========================================================= */
+
+.phone-frame {
+    width: 390px;
+    height: 780px;
+    background: var(--cream);
+    border: 3px solid var(--black);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   4. SCREEN SYSTEM
+   Only the screen with .active is visible.
+   ========================================================= */
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   5. SHARED HEADER STYLES
+   ========================================================= */
+
+.top-header,
+.game-header {
+    background: var(--teal);
+    border-bottom: 3px solid var(--black);
+    min-height: 76px;
+    padding: 16px;
+}
+
+.top-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-header h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hud-text {
+    font-size: 25px;
+    font-weight: 800;
+}
+
+/* =========================================================
+   6. START SCREEN
+   ========================================================= */
+
+.start-content {
+    flex: 1;
+    background: var(--cream);
+    padding: 24px 20px 12px;
+    text-align: center;
+    position: relative;
+}
+
+.start-content h1 {
+  margin-top: 30px;
+  margin-bottom: 6px;
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.start-content p {
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.cloud-row,
+.drop-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.cloud-icon {
+    width: 70px;
+    height: auto;
+    filter: grayscale(40%);
+}
+
+.clean-drop-icon {
+    width: 48px;
+    height: auto;
+}
+
+.dirty-drop-icon {
+    width: 35px;
+    height: auto;
+}
+
+.bucket-large {
+    position: relative;
+    width: 110px;
+    margin: 45px auto 0;
+}
+
+.bucket-large > img:first-child {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bucket-logo-large {
+    position: absolute;
+    width: 24px;
+    height: auto;
+    left: 50%;
+    top: 58px;
+    transform: translateX(-50%);
+}
+
+/* Start screen charity: water logo */
+.brand-text {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+}
+
+.brand-logo-img {
+  width: 125px;
+  height: auto;
+  display: block;
+}
+
+/* =========================================================
+   7. MENU FOOTER AND BUTTONS
+   ========================================================= */
+
+.menu-footer {
+    background: var(--teal);
+    min-height: 280px;
+    border-top: 3px solid var(--black);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    position: relative;
+}
+
+.main-btn {
+  background: var(--yellow);
+  color: var(--black);
+  border: none;
+  border-radius: 14px;
+  width: 250px;
+  padding: 15px 18px;
+
+  font-size: 22px;
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.main-btn:hover {
+  transform: scale(1.02);
+}
+
+.jerry-icon {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  color: var(--yellow);
+  font-size: 34px;
+}
+
+/* =========================================================
+   8. GAMEPLAY AREA
+   ========================================================= */
+
+.game-area {
+    flex: 1;
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+}
+
+/* Progress Bars */
+
+.status-panel {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 10;
+}
+
+.bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.progress-track {
+    width: 140px;
+    height: 24px;
+    background: var(--gray);
+    border: 2px solid var(--black);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 14px;
+    transition: width 0.2s ease;
+}
+
+.bucket-fill {
+    background: var(--clean-blue);
+}
+
+.dirty-fill {
+    background: var(--dirty-green);
+}
+
+.bar-percent {
+    font-weight: 800;
+    font-size: 18px;
+    width: 42px;
+}
+
+.bar-icon-img {
+    width: 22px;
+    height: auto;
+    display: block;
+}
+
+
+/* Sound Button */
+
+.sound-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 10;
+
+    background: none;
+    border: none;
+    font-size: 38px;
+    cursor: pointer;
+}
+
+.sound-icon {
+    width: 44px;
+    height: auto;
+    display: black;
+}
+
+
+/* Decorative Clouds */
+
+.game-area img.cloud {
+  position: absolute;
+  z-index: 2;
+  height: auto;
+  max-width: 200px;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.game-area .cloud-1 {
+  top: 110px;
+  left: 24px;
+  width: 95px;
+}
+
+.game-area .cloud-2 {
+  top: 170px;
+  left: 150px;
+  width: 85px;
+}
+
+.game-area .cloud-3 {
+  top: 115px;
+  right: 24px;
+  width: 85px;
+}
+
+/* Drops created by JavaScript */
+
+#drops-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+}
+
+.falling-drop {
+  position: absolute;
+  z-index: 7;
+  width: 38px;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.falling-drop img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* Movement Guide Line */
+
+.move-line {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    bottom: 190px;
+
+    border-top: 2px dashed var(--black);
+    opacity: 0.8;
+}
+
+
+/* Bucket */
+
+#bucket.bucket {
+  position: absolute;
+  bottom: 110px;
+  left: 195px;
+  transform: translateX(-50%);
+  width: 75px;
+  height: auto;
+  z-index: 8;
+}
+
+/* Bucket PNG */
+#bucket > img:first-child {
+  width: 75px;
+  height: auto;
+  display: block;
+}
+
+/* Jerry Can Logo */
+.bucket-logo-img {
+  position: absolute;
+  width: 16px;
+  height: auto;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  z-index: 9;
+}
+
+.bucket-logo-img {
+  position: absolute;
+  width: 16px;
+  height: auto;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  z-index: 9;
+}
+
+.start-jerry-icon {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  width: 24px;
+  height: auto;
+}
+
+
+/* Movement buttons */
+
+.arrow-btn {
+  position: absolute;
+  bottom: 65px;
+
+  width: 125px;
+  height: 72px;
+
+  background: var(--yellow);
+  border: none;
+  border-radius: 14px;
+
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1;
+
+  cursor: pointer;
+  z-index: 9;
+}
+
+.left-control {
+  left: 18px;
+}
+
+.right-control {
+  right: 18px;
+}
+
+
+/* Footer branding */
+
+.game-brand {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+  background: var(--teal);
+  border-top: 3px solid var(--black);
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 10px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.charity-logo {
+    width: 130px;
+    height: auto;
+    display: block;
+}
+
+
+/* =========================================================
+   9. END SCREEN
+   ========================================================= */
+
+.end-content {
+  flex: 1;
+  background: var(--cream);
+  padding: 40px 24px;
+  text-align: center;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.end-content h1 {
+  font-size: 42px;
+  margin-bottom: 8px;
+}
+
+.end-content p {
+  font-size: 18px;
+}
+
+.results-box {
+  background: #ffffff88;
+  border: 2px solid var(--black);
+  border-radius: 14px;
+  width: 85%;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.results-box p {
+  margin: 8px 0;
+}
+
+.impact-message {
+  font-weight: 700;
+  margin: 22px 0;
+}
+
+.link-btn {
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* End screen charity: water logo */
+.end-charity-logo {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  width: 125px;
+  height: auto;
+  display: block;
+}
+
+/* =========================================================
+   10. MODALS
+   These are pop-up boxes for How To Play and Options.
+   ========================================================= */
+
+.modal {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 50;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-box {
+  background: var(--cream);
+  border: 3px solid var(--black);
+  border-radius: 18px;
+  width: 85%;
+  padding: 24px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.modal-box h2 {
+  font-size: 30px;
+}
+
+.modal-box p {
+  font-size: 18px;
+}
+
+#end-screen .end-charity-logo {
+  position: absolute;
+  left: 10px;
+  bottom: -45px;
+  width: 130px;
+  height: auto;
+  display: block;
+  z-index: 20;
+}
